@@ -8,11 +8,24 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
 
 class Home extends React.Component {
-  static propTypes = {};
+  static propTypes = {
+    questions: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        title: PropTypes.string,
+        videoUrl: PropTypes.string,
+      }),
+    ),
+  };
+
+  static defaultProps = {
+    questions: [],
+  };
 
   render() {
     return (
@@ -23,6 +36,7 @@ class Home extends React.Component {
             {'{'}
             code
             {'}'}
+            {JSON.stringify(this.props.questions)}
           </h1>
         </div>
       </div>

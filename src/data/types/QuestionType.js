@@ -8,23 +8,19 @@
  */
 
 import {
-  GraphQLSchema as Schema,
   GraphQLObjectType as ObjectType,
+  GraphQLID as ID,
+  GraphQLString as StringType,
+  GraphQLNonNull as NonNull,
 } from 'graphql';
 
-import me from './queries/me';
-import news from './queries/news';
-import questions from './queries/questions';
-
-const schema = new Schema({
-  query: new ObjectType({
-    name: 'Query',
-    fields: {
-      me,
-      news,
-      questions,
-    },
-  }),
+const QuestionType = new ObjectType({
+  name: 'Question',
+  fields: {
+    id: { type: new NonNull(ID) },
+    title: { type: StringType },
+    videoUrl: { type: StringType },
+  },
 });
 
-export default schema;
+export default QuestionType;
