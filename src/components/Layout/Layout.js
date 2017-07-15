@@ -17,6 +17,7 @@ import s from './Layout.css';
 import Header from '../Header';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
+import Cover from '../Cover';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -27,6 +28,7 @@ class Layout extends React.Component {
     return (
       <div>
         <Header />
+        <Cover />
         {this.props.children}
         <Feedback />
         <Footer />
