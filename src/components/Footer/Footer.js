@@ -12,6 +12,9 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Footer.css';
 import Link from '../Link';
 
+const FaTwitter = require('react-icons/lib/fa/twitter');
+const FaFacebook = require('react-icons/lib/fa/facebook');
+
 class Footer extends React.Component {
   render() {
     return (
@@ -34,6 +37,13 @@ class Footer extends React.Component {
           <Link className={s.link} to="/not-found">
             Not Found
           </Link>
+          <a href="http://www.refugeescode.at/">Home</a>&nbsp;
+          <a href="https://twitter.com/RefugeesCode">
+            {' '}<FaTwitter />{' '}
+          </a>&nbsp;
+          <a href="https://www.facebook.com/refugeescode/">
+            {' '}<FaFacebook />{' '}
+          </a>&nbsp;
         </div>
       </div>
     );
