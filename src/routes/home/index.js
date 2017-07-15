@@ -14,18 +14,18 @@ import Layout from '../../components/Layout';
 async function action({ fetch }) {
   const resp = await fetch('/graphql', {
     body: JSON.stringify({
-      query: '{questions{id,title,videoUrl}}',
+      query: '{questions{id,title,videoUrl},me{email}}',
     }),
   });
   const { data } = await resp.json();
-  if (!data || !data.questions) {
-    throw new Error('Failed to load the questions.');
+  if (!data || !data.questions || !data.me) {
+    throw new Error('Failed to load data.');
   }
   return {
     chunks: ['home'],
     title: 'Ask refugees{code}',
     component: (
-      <Layout>
+      <Layout userEmail={data.me.email}>
         <Home questions={data.questions} />
       </Layout>
     ),

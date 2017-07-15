@@ -20,11 +20,8 @@ class Home extends React.Component {
         title: PropTypes.string,
         videoUrl: PropTypes.string,
       }),
-    ),
-  };
-
-  static defaultProps = {
-    questions: [],
+    ).isRequired,
+    userEmail: PropTypes.string.isRequired,
   };
 
   render() {
@@ -36,7 +33,6 @@ class Home extends React.Component {
             {'{'}
             code
             {'}'}
-            {JSON.stringify(this.props.questions)}
           </h1>
         </div>
       </div>
