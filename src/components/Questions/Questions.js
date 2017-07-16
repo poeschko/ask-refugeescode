@@ -28,7 +28,9 @@ class Questions extends React.Component {
       <div className={s.questions}>
         {loading && <span className={s.loading}>Loading...</span>}
         {questions &&
-          questions.map(question => <QuestionItem question={question} />)}
+          questions.map(question =>
+            <QuestionItem key={question.id} question={question} />,
+          )}
       </div>
     );
   }
