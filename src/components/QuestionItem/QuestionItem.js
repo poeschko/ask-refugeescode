@@ -17,7 +17,9 @@ class QuestionItem extends React.Component {
         <div className={s.iconWrapper}>
           <FaShareAlt />
         </div>
-        {this.props.question.title} - {this.props.question.id}
+        <a href={`#${this.props.question.id}`}>
+          {this.props.question.title}
+        </a>
       </li>
     );
   }
