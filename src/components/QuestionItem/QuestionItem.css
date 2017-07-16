@@ -1,8 +1,17 @@
 .questionItem {
   width: 100%;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.questionItem a {
+  color: black;
+  font-size: 22px;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .iconWrapper {
-  width: 16px;
   float: right;
+  color: #777;
 }
