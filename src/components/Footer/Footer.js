@@ -20,11 +20,13 @@ class Footer extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <div className={s.links}>
-            <a href="http://www.refugeescode.at/">Website</a>&nbsp;
-            <a href="https://twitter.com/RefugeesCode">
+            <a className={s.link} href="http://www.refugeescode.at/">
+              Website
+            </a>&nbsp;
+            <a className={s.link} href="https://twitter.com/RefugeesCode">
               {' '}<FaTwitter />{' '}
             </a>&nbsp;
-            <a href="https://www.facebook.com/refugeescode/">
+            <a className={s.link} href="https://www.facebook.com/refugeescode/">
               {' '}<FaFacebook />{' '}
             </a>&nbsp;
           </div>
