@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import { graphql, compose } from 'react-apollo';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import questionsQuery from './questions.graphql';
+import Questions from '../../components/Questions';
 import s from './Home.css';
 
 class Home extends React.Component {
@@ -40,7 +41,7 @@ class Home extends React.Component {
                 {'{'}
                 code
                 {'}'}
-                {JSON.stringify(questions)}
+                <Questions questions={questions} />
               </h1>}
         </div>
       </div>
