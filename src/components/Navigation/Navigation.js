@@ -1,3 +1,5 @@
+// @flow
+
 /**
  * React Starter Kit (https://www.reactstarterkit.com/)
  *
@@ -8,18 +10,17 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Navigation.css';
 import Link from '../Link';
 
 class Navigation extends React.Component {
-  static propTypes = {
-    userEmail: PropTypes.string,
-  };
-
   static defaultProps = {
     userEmail: '',
+  };
+
+  props: {
+    userEmail?: string,
   };
 
   render() {
