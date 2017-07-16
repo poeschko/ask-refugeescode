@@ -10,8 +10,8 @@ import type Question from '../../data/flow/Question';
 
 class EditQuestionDialog extends React.Component {
   state = {
-    title: this.props.question.title,
-    videoUrl: this.props.question.videoUrl,
+    title: this.props.question ? this.props.question.title : '',
+    videoUrl: this.props.question ? this.props.question.videoUrl : '',
   };
 
   onChangeTitle = event => {
@@ -28,7 +28,7 @@ class EditQuestionDialog extends React.Component {
 
   onConfirmClick = () => {
     this.props.onConfirm({
-      id: this.props.question.id,
+      id: this.props.question ? this.props.question.id : null,
       title: this.state.title,
       videoUrl: this.state.videoUrl,
     });

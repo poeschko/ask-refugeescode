@@ -16,18 +16,25 @@ const editQuestion = {
     },
   },
   resolve(root, { id, title, videoUrl }) {
-    return Question.findById(id).then(question =>
-      question
-        .update({
-          title,
-          videoUrl,
-        })
-        .then(() => ({
-          id,
-          title: question.title,
-          videoUrl: question.videoUrl,
-        })),
-    );
+    if (id) {
+      return Question.findById(id).then(question =>
+        question
+          .update({
+            title,
+            videoUrl,
+          })
+          .then(() => ({
+            id,
+            title: question.title,
+            videoUrl: question.videoUrl,
+          })),
+      );
+    }
+    return Question.create({ title, videoUrl }).then(question => ({
+      id: question.id,
+      title: question.title,
+      videoUrl: question.videoUrl,
+    }));
   },
 };
 

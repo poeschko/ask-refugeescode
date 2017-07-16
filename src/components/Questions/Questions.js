@@ -50,8 +50,18 @@ class Questions extends React.Component {
         title: question.title,
         videoUrl: question.videoUrl,
       },
+      refetchQueries: [
+        {
+          query: questionsQuery,
+          variables: { search: this.props.search },
+        },
+      ],
     });
     this.closeModal();
+  };
+
+  onAddQuestionClick = () => {
+    this.setState({ current: null, editing: true });
   };
 
   openModal = question => {
@@ -63,7 +73,7 @@ class Questions extends React.Component {
   };
 
   closeModal = () => {
-    this.setState({ current: null });
+    this.setState({ current: null, editing: false });
   };
 
   embedLink = id => `https://www.youtube.com/embed/${id}`;
@@ -74,6 +84,7 @@ class Questions extends React.Component {
       questions: Question[],
     },
     editQuestionMutation: Function,
+    search: string,
   };
 
   renderQuestionDialog() {
@@ -98,12 +109,12 @@ class Questions extends React.Component {
 
   renderEditDialog() {
     const { current, editing } = this.state;
-    if (editing && current) {
+    if (editing) {
       return (
         <EditQuestionDialog
           isOpen={editing}
           question={current}
-          isCreating={false}
+          isCreating={!current}
           onConfirm={this.onSaveQuestion}
           onCancel={this.closeModal}
         />
@@ -116,6 +127,7 @@ class Questions extends React.Component {
     const { loading, questions } = this.props.data;
     return (
       <div>
+        <button onClick={this.onAddQuestionClick}>Add a question</button>
         {loading && <span className={s.loading}>Loading...</span>}
         <ul className={s.questions}>
           {questions &&
