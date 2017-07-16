@@ -27,11 +27,11 @@ class QuestionItem extends React.Component {
     return (
       <li className={s.questionItem}>
         <div className={s.iconWrapper}>
-          <button onClick={this.onEditClick}>
+          <button className={s.questionButton} onClick={this.onEditClick}>
             <FaEdit />
           </button>
         </div>
-        <button onClick={this.onOpenClick}>
+        <button className={s.questionButton} onClick={this.onOpenClick}>
           {this.props.question.title}
         </button>
       </li>

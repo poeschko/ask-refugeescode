@@ -1,17 +1,27 @@
 .questionItem {
   width: 100%;
   border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
-}
-
-.questionItem a {
-  color: black;
-  font-size: 22px;
-  font-weight: 600;
-  text-decoration: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .iconWrapper {
   float: right;
   color: #777;
+}
+
+.questionButton {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  margin: 0;
+  font: inherit;
+  font-size: 16pt;
+  font-weight: 400;
+  color: black;
+}
+
+.questionButton:hover {
+  color: #4c6838;
+  cursor: pointer;
 }
