@@ -23,6 +23,12 @@ During local development, data is stored in an [SQLite](https://www.sqlite.org/)
 
 On the production server, data is stored in a [Heroku Postgres](https://www.heroku.com/postgres) database. The necessary `DATABASE_URL` environment variable is automatically set by Heroku.
 
-To interface with the database (both locally and on production), the Node.js ORM [Sequelize](http://docs.sequelizejs.com/) is used.
+To interface with the database (both locally and on production), the Node.js ORM [Sequelize](http://docs.sequelizejs.com/) is used. Data is exposed as a [GraphQL](http://graphql.org/) API, using [React Apollo](https://github.com/apollographql/react-apollo) to fetch data from React components.
 
 Data is only editable when logged in as one of the predefined administrators via Facebook. To make Facebook login work, we set the environment variables `FACEBOOK_APP_ID` and `FACEBOOK_APP_SECRET` in the Heroku app configuration.
+
+## TODO
+
+* Improve design
+* Improving editing workflow
+* Add more tests
