@@ -11,7 +11,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, compose } from 'react-apollo';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import newsQuery from './news.graphql';
+import questionsQuery from './questions.graphql';
 import s from './Home.css';
 
 class Home extends React.Component {
@@ -25,12 +25,11 @@ class Home extends React.Component {
           videoUrl: PropTypes.string,
         }),
       ).isRequired,
-      userEmail: PropTypes.string.isRequired,
     }).isRequired,
   };
 
   render() {
-    const { data: { loading } } = this.props;
+    const { data: { loading, questions } } = this.props;
     return (
       <div className={s.root}>
         <div className={s.container}>
@@ -41,6 +40,7 @@ class Home extends React.Component {
                 {'{'}
                 code
                 {'}'}
+                {JSON.stringify(questions)}
               </h1>}
         </div>
       </div>
@@ -48,4 +48,4 @@ class Home extends React.Component {
   }
 }
 
-export default compose(withStyles(s), graphql(newsQuery))(Home);
+export default compose(withStyles(s), graphql(questionsQuery))(Home);
