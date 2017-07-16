@@ -31,11 +31,11 @@
   border: none;
 }
 
-.questionDialog iframe {
+.youtubeFrame {
   border: none;
 }
 
-.questionDialog h3 {
+.questionDialogTitle {
   padding: 0;
   margin: 10px;
 }

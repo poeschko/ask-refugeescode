@@ -71,6 +71,7 @@ class Questions extends React.Component {
           }}
         >
           <iframe
+            className={s.youtubeFrame}
             title={
               this.state.current ? this.state.current.title : 'No opened video'
             }
@@ -79,7 +80,7 @@ class Questions extends React.Component {
             height="450px"
             allowFullScreen
           />
-          <h3>
+          <h3 className={s.questionDialogTitle}>
             {' '}{this.state.current
               ? this.state.current.title
               : 'No opened video'}{' '}
