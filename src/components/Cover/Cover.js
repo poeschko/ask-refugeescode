@@ -30,14 +30,13 @@ class Cover extends React.Component {
             placeholder="Search.."
             onChange={this.onSearchChange}
           />
-          <label htmlFor="search" className="sr-only">
-            suchen
-          </label>
           <button
             className="btn btn-secondary"
             type="submit"
             aria-label="suchen"
-          />
+          >
+            <i className="fa fa-search">Search</i>
+          </button>
         </div>
       </div>
     );
