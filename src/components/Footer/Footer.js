@@ -9,10 +9,11 @@
 
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Footer.css';
+import FaTwitter from 'react-icons/lib/fa/twitter';
+import FaFacebook from 'react-icons/lib/fa/facebook';
+import FaGitHub from 'react-icons/lib/fa/github';
 
-const FaTwitter = require('react-icons/lib/fa/twitter');
-const FaFacebook = require('react-icons/lib/fa/facebook');
+import s from './Footer.css';
 
 class Footer extends React.Component {
   render() {
@@ -20,18 +21,24 @@ class Footer extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <div className={s.links}>
-            <a className={s.link} href="http://www.refugeescode.at/">
-              Website
-            </a>&nbsp;
             <a className={s.link} href="https://twitter.com/RefugeesCode">
               {' '}<FaTwitter />{' '}
             </a>&nbsp;
             <a className={s.link} href="https://www.facebook.com/refugeescode/">
               {' '}<FaFacebook />{' '}
             </a>&nbsp;
+            <a
+              className={s.link}
+              href="https://github.com/poeschko/ask-refugeescode"
+            >
+              {' '}<FaGitHub />{' '}
+            </a>
           </div>
           <span className={s.text}>
-            © Developed by refugees{'{'}code{'}'}
+            © Developed by{' '}
+            <a className={s.link} href="http://www.refugeescode.at/">
+              refugees{'{'}code{'}'}
+            </a>
           </span>
         </div>
       </div>
