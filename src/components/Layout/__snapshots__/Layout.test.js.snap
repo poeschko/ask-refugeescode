@@ -14,75 +14,26 @@ exports[`Layout renders children correctly 1`] = `
       >
         <a
           className="link"
-          href="/about"
-          onClick={[Function]}
-        >
-          About
-        </a>
-        <a
-          className="link"
-          href="/contact"
-          onClick={[Function]}
-        >
-          Contact
-        </a>
-        <span
-          className="spacer"
-        >
-           | 
-        </span>
-        <a
-          className="link"
           href="/login"
           onClick={[Function]}
         >
           Log in
         </a>
-        <span
-          className="spacer"
-        >
-          or
-        </span>
+      </div>
+      <h1
+        className="titleText"
+      >
         <a
-          className="link highlight"
-          href="/register"
+          className="titleLink"
+          href="/"
           onClick={[Function]}
         >
-          Sign up
+          Ask refugees
+          {
+          code
+          }
         </a>
-      </div>
-      <a
-        className="brand"
-        href="/"
-        onClick={[Function]}
-      >
-        <img
-          alt="React"
-          height="38"
-          src="logo-small.png"
-          srcSet="logo-small@2x.png 2x"
-          width="38"
-        />
-        <span
-          className="brandTxt"
-        >
-          Your Company
-        </span>
-      </a>
-      <div
-        className="banner"
-      >
-        <h1
-          className="bannerTitle"
-        >
-          React
-        </h1>
-        <p
-          className="bannerDesc"
-        >
-          Complex web apps made easy
-        </p>
-      </div>
+      </h1>
     </div>
   </div>
   <div
@@ -94,84 +45,105 @@ exports[`Layout renders children correctly 1`] = `
     <div
       className="container"
     >
-      <a
-        className="link"
-        href="https://gitter.im/kriasoft/react-starter-kit"
+      <div
+        className="links"
       >
-        Ask a question
-      </a>
-      <span
-        className="spacer"
-      >
-        |
-      </span>
-      <a
-        className="link"
-        href="https://github.com/kriasoft/react-starter-kit/issues/new"
-      >
-        Report an issue
-      </a>
-    </div>
-  </div>
-  <div
-    className="root"
-  >
-    <div
-      className="container"
-    >
+        <a
+          className="link"
+          href="https://twitter.com/RefugeesCode"
+        >
+           
+          <svg
+            fill="currentColor"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            style={
+              Object {
+                "color": undefined,
+                "verticalAlign": "middle",
+              }
+            }
+            viewBox="0 0 40 40"
+            width="1em"
+          >
+            <g>
+              <path
+                d="m37.7 9.1q-1.5 2.2-3.7 3.7 0.1 0.3 0.1 1 0 2.9-0.9 5.8t-2.6 5.5-4.1 4.7-5.7 3.3-7.2 1.2q-6.1 0-11.1-3.3 0.8 0.1 1.7 0.1 5 0 9-3-2.4-0.1-4.2-1.5t-2.6-3.5q0.8 0.1 1.4 0.1 1 0 1.9-0.3-2.5-0.5-4.1-2.5t-1.7-4.6v0q1.5 0.8 3.3 0.9-1.5-1-2.4-2.6t-0.8-3.4q0-2 0.9-3.7 2.7 3.4 6.6 5.4t8.3 2.2q-0.2-0.9-0.2-1.7 0-3 2.1-5.1t5.1-2.1q3.2 0 5.3 2.3 2.4-0.5 4.6-1.7-0.8 2.5-3.2 3.9 2.1-0.2 4.2-1.1z"
+              />
+            </g>
+          </svg>
+           
+        </a>
+         
+        <a
+          className="link"
+          href="https://www.facebook.com/refugeescode/"
+        >
+           
+          <svg
+            fill="currentColor"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            style={
+              Object {
+                "color": undefined,
+                "verticalAlign": "middle",
+              }
+            }
+            viewBox="0 0 40 40"
+            width="1em"
+          >
+            <g>
+              <path
+                d="m29.4 0.3v5.9h-3.5q-1.9 0-2.6 0.8t-0.7 2.4v4.2h6.6l-0.9 6.6h-5.7v16.9h-6.8v-16.9h-5.7v-6.6h5.7v-4.9q0-4.1 2.3-6.4t6.2-2.3q3.3 0 5.1 0.3z"
+              />
+            </g>
+          </svg>
+           
+        </a>
+         
+        <a
+          className="link"
+          href="https://github.com/poeschko/ask-refugeescode"
+        >
+           
+          <svg
+            fill="currentColor"
+            height="1em"
+            preserveAspectRatio="xMidYMid meet"
+            style={
+              Object {
+                "color": undefined,
+                "verticalAlign": "middle",
+              }
+            }
+            viewBox="0 0 40 40"
+            width="1em"
+          >
+            <g>
+              <path
+                d="m20.1 2.9q4.7 0 8.6 2.3t6.3 6.2 2.3 8.6q0 5.6-3.3 10.1t-8.4 6.2q-0.6 0.1-0.9-0.2t-0.3-0.7q0 0 0-1.7t0-3q0-2.1-1.2-3.1 1.3-0.2 2.3-0.4t2.1-0.9 1.8-1.5 1.2-2.3 0.5-3.4q0-2.7-1.8-4.6 0.8-2-0.2-4.5-0.6-0.2-1.8 0.2t-2 1l-0.9 0.5q-2-0.6-4.3-0.6t-4.2 0.6q-0.4-0.2-1-0.6t-1.9-0.8-1.9-0.3q-1 2.5-0.1 4.5-1.8 1.9-1.8 4.6 0 1.9 0.5 3.4t1.1 2.3 1.8 1.5 2.1 0.9 2.3 0.4q-0.9 0.8-1.1 2.3-0.4 0.2-1 0.3t-1.3 0.1-1.4-0.5-1.3-1.4q-0.4-0.7-1-1.1t-1.1-0.6l-0.5 0q-0.5 0-0.6 0.1t-0.1 0.2 0.2 0.3 0.2 0.3l0.2 0.1q0.5 0.2 1 0.9t0.7 1.1l0.2 0.5q0.3 0.9 1 1.4t1.5 0.7 1.5 0.1 1.3-0.1l0.5 0q0 0.8 0 1.9t0 1.2q0 0.5-0.3 0.7t-0.9 0.2q-5.2-1.7-8.4-6.2t-3.3-10.1q0-4.7 2.3-8.6t6.2-6.2 8.6-2.3z m-10.6 24.6q0.1-0.2-0.2-0.3-0.2-0.1-0.2 0.1-0.1 0.1 0.1 0.2 0.2 0.2 0.3 0z m0.7 0.7q0.1-0.1-0.1-0.3-0.2-0.2-0.3-0.1-0.2 0.1 0 0.4 0.3 0.2 0.4 0z m0.7 1q0.2-0.1 0-0.4-0.2-0.3-0.4-0.1-0.2 0.1 0 0.4t0.4 0.1z m0.9 1q0.2-0.2-0.1-0.4-0.3-0.3-0.4-0.1-0.2 0.2 0 0.4 0.3 0.3 0.5 0.1z m1.3 0.5q0-0.2-0.3-0.3-0.4-0.1-0.4 0.1t0.2 0.4q0.4 0.1 0.5-0.2z m1.4 0.1q0-0.2-0.4-0.2-0.4 0-0.4 0.2 0 0.3 0.4 0.3 0.4 0 0.4-0.3z m1.3-0.2q-0.1-0.2-0.4-0.2-0.4 0.1-0.3 0.4t0.4 0.1 0.3-0.3z"
+              />
+            </g>
+          </svg>
+           
+        </a>
+      </div>
       <span
         className="text"
       >
-        © Your Company
+        © Developed by
+         
+        <a
+          className="link"
+          href="http://www.refugeescode.at/"
+        >
+          refugees
+          {
+          code
+          }
+        </a>
       </span>
-      <span
-        className="spacer"
-      >
-        ·
-      </span>
-      <a
-        className="link"
-        href="/"
-        onClick={[Function]}
-      >
-        Home
-      </a>
-      <span
-        className="spacer"
-      >
-        ·
-      </span>
-      <a
-        className="link"
-        href="/admin"
-        onClick={[Function]}
-      >
-        Admin
-      </a>
-      <span
-        className="spacer"
-      >
-        ·
-      </span>
-      <a
-        className="link"
-        href="/privacy"
-        onClick={[Function]}
-      >
-        Privacy
-      </a>
-      <span
-        className="spacer"
-      >
-        ·
-      </span>
-      <a
-        className="link"
-        href="/not-found"
-        onClick={[Function]}
-      >
-        Not Found
-      </a>
     </div>
   </div>
 </div>
