@@ -65,7 +65,7 @@ class Questions extends React.Component {
   renderQuestionDialog() {
     return (
       <Modal
-        isOpen={this.state.current}
+        isOpen={this.state.current && !this.state.editing}
         onAfterOpen={this.afterOpenModal}
         onRequestClose={this.closeModal}
         contentLabel="Answer Video"
