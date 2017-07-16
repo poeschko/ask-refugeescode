@@ -31,7 +31,7 @@ class QuestionItem extends React.Component {
             <FaEdit />
           </button>
         </div>
-        <button onClick={this.onOpenClick}>
+        <button className={s.questionButton} onClick={this.onOpenClick}>
           {this.props.question.title}
         </button>
       </li>
