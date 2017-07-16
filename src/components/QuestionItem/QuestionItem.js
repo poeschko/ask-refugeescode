@@ -27,7 +27,7 @@ class QuestionItem extends React.Component {
     return (
       <li className={s.questionItem}>
         <div className={s.iconWrapper}>
-          <button onClick={this.onEditClick}>
+          <button className={s.questionButton} onClick={this.onEditClick}>
             <FaEdit />
           </button>
         </div>

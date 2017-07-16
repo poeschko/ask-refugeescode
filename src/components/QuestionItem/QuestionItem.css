@@ -23,4 +23,5 @@
 
 .questionButton:hover {
   color: #4c6838;
+  cursor: pointer;
 }
