@@ -9,29 +9,6 @@ import QuestionItem from '../QuestionItem';
 
 import s from './Questions.css';
 
-const customStyles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  },
-  content: {
-    position: 'absolute',
-    padding: '0px',
-    width: '800px',
-    height: '500px',
-    margin: '0px auto',
-    background: '#fff',
-    WebkitOverflowScrolling: 'touch',
-    overflow: 'hidden',
-    borderRadius: '0px',
-    border: '0px',
-  },
-};
-
 class Questions extends React.Component {
   static propTypes = {
     data: PropTypes.shape({
@@ -83,8 +60,17 @@ class Questions extends React.Component {
           isOpen={this.state.current}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={customStyles}
           contentLabel="Answer Video"
+          className={{
+            base: s.questionDialog,
+            afterOpen: 'questionDialogBg_after-open',
+            beforeClose: 'questionDialogBg_before-close',
+          }}
+          overlayClassName={{
+            base: s.questionDialogBg,
+            afterOpen: 'questionDialog_after-open',
+            beforeClose: 'questionDialog_before-close',
+          }}
         >
           <iframe
             title={
@@ -95,10 +81,15 @@ class Questions extends React.Component {
                 ? this.embedLink(this.state.current.videoUrl)
                 : 'no-link'
             }
-            width={customStyles.content.width}
+            width="100%"
             height="400px"
             allowFullScreen
           />
+          <h3>
+            {' '}{this.state.current
+              ? this.state.current.title
+              : 'No opened video'}{' '}
+          </h3>
         </Modal>
       </div>
     );
