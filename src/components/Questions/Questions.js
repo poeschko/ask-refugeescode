@@ -14,29 +14,6 @@ import s from './Questions.css';
 
 import type Question from '../../data/flow/Question';
 
-const customStyles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  },
-  content: {
-    position: 'absolute',
-    padding: '0px',
-    width: '800px',
-    height: '500px',
-    margin: '0px auto',
-    background: '#fff',
-    WebkitOverflowScrolling: 'touch',
-    overflow: 'hidden',
-    borderRadius: '0px',
-    border: '0px',
-  },
-};
-
 class Questions extends React.Component {
   state = {
     current: null,
@@ -76,8 +53,6 @@ class Questions extends React.Component {
     this.setState({ current: null, editing: false });
   };
 
-  embedLink = id => `https://www.youtube.com/embed/${id}`;
-
   props: {
     data: {
       loading: boolean,
@@ -88,21 +63,38 @@ class Questions extends React.Component {
   };
 
   renderQuestionDialog() {
-    const { current, editing } = this.state;
     return (
       <Modal
-        isOpen={!editing && current}
+        isOpen={this.state.current}
+        onAfterOpen={this.afterOpenModal}
         onRequestClose={this.closeModal}
-        style={customStyles}
         contentLabel="Answer Video"
+        className={{
+          base: s.questionDialog,
+          afterOpen: 'questionDialogBg_after-open',
+          beforeClose: 'questionDialogBg_before-close',
+        }}
+        overlayClassName={{
+          base: s.questionDialogBg,
+          afterOpen: 'questionDialog_after-open',
+          beforeClose: 'questionDialog_before-close',
+        }}
       >
         <iframe
-          title={current ? current.title : 'No opened video'}
-          src={current ? this.embedLink(current.videoUrl) : 'no-link'}
-          width={customStyles.content.width}
-          height="400px"
+          className={s.youtubeFrame}
+          title={
+            this.state.current ? this.state.current.title : 'No opened video'
+          }
+          src={this.state.current ? this.state.current.videoUrl : 'no-link'}
+          width="100%"
+          height="450px"
           allowFullScreen
         />
+        <h3 className={s.questionDialogTitle}>
+          {' '}{this.state.current
+            ? this.state.current.title
+            : 'No opened video'}{' '}
+        </h3>
       </Modal>
     );
   }
