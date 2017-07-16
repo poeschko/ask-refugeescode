@@ -20,11 +20,11 @@ class Header extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <Navigation userEmail={this.props.userEmail} />
-          <Link className={s.titleLink} to="/">
-            <h1 className={s.titleText}>
+          <h1 className={s.titleText}>
+            <Link className={s.titleLink} to="/">
               Ask refugees{'{'}code{'}'}
-            </h1>
-          </Link>
+            </Link>
+          </h1>
         </div>
       </div>
     );

@@ -27,10 +27,7 @@ class Home extends React.Component {
       <div>
         <Cover onSearchChange={this.onSearchChange} />
         <div className={s.container}>
-          <h1>
-            Ask refugees {'{'}code{'}'}
-            <Questions search={this.state.search} />
-          </h1>
+          <Questions search={this.state.search} />
         </div>
       </div>
     );

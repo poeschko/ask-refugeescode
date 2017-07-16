@@ -25,12 +25,13 @@
 }
 
 .titleLink {
+  color: white;
   text-decoration: none;
 }
 
 .titleText {
-  font-size: 35px;
-  color: white;
+  font-size: 36px;
   margin: 0;
+  text-transform: uppercase;
 }
 

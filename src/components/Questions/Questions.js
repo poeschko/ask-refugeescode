@@ -25,7 +25,7 @@ class Questions extends React.Component {
   render() {
     const { loading, questions } = this.props.data;
     return (
-      <div className={s.questions}>
+      <div>
         {loading && <span className={s.loading}>Loading...</span>}
         {questions &&
           questions.map(question =>

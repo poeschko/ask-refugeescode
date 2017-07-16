@@ -20,23 +20,17 @@ class Cover extends React.Component {
   render() {
     return (
       <div className={s.cover}>
-        <h3 className={s.prompt}>
-          {' '}Search the refugees{'{'}code{'}'} question
-        </h3>
-        <div className={s.suche}>
-          {' '}<input
+        <h2 className={s.prompt}>
+          Search the refugees{'{'}code{'}'} questions
+        </h2>
+        <div className={s.searchContainer}>
+          <input
+            className={s.search}
             type="text"
             name="search"
-            placeholder="Search.."
+            placeholder="Search"
             onChange={this.onSearchChange}
           />
-          <button
-            className="btn btn-secondary"
-            type="submit"
-            aria-label="suchen"
-          >
-            <i className="fa fa-search">Search</i>
-          </button>
         </div>
       </div>
     );
