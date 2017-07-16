@@ -15,22 +15,21 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import normalizeCss from 'normalize.css';
 import s from './Layout.css';
 import Header from '../Header';
-import Feedback from '../Feedback';
 import Footer from '../Footer';
 import Cover from '../Cover';
 
 class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    userEmail: PropTypes.string.isRequired,
   };
 
   render() {
     return (
       <div>
-        <Header />
+        <Header userEmail={this.props.userEmail} />
         <Cover />
         {this.props.children}
-        <Feedback />
         <Footer />
       </div>
     );

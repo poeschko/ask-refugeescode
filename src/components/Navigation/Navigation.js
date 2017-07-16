@@ -8,29 +8,30 @@
  */
 
 import React from 'react';
-import cx from 'classnames';
+import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Navigation.css';
 import Link from '../Link';
 
 class Navigation extends React.Component {
+  static propTypes = {
+    userEmail: PropTypes.string,
+  };
+
+  static defaultProps = {
+    userEmail: '',
+  };
+
   render() {
     return (
       <div className={s.root} role="navigation">
-        <Link className={s.link} to="/about">
-          About
-        </Link>
-        <Link className={s.link} to="/contact">
-          Contact
-        </Link>
-        <span className={s.spacer}> | </span>
-        <Link className={s.link} to="/login">
-          Log in
-        </Link>
-        <span className={s.spacer}>or</span>
-        <Link className={cx(s.link, s.highlight)} to="/register">
-          Sign up
-        </Link>
+        {this.props.userEmail
+          ? <span>
+              Logged in as {this.props.userEmail}
+            </span>
+          : <Link className={s.link} to="/login">
+              Log in
+            </Link>}
       </div>
     );
   }

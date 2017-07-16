@@ -9,60 +9,44 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql, compose } from 'react-apollo';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import questionsQuery from './questions.graphql';
 import Questions from '../../components/Questions';
 import s from './Home.css';
 
-const dummyQuestions = [
-  {
-    title: 'DJ Khaled - Wild Thoughts ft. Rihanna, Bryson Tiller',
-    id: 'fyaI4-5849w',
-  },
-  {
-    title: 'Bruno Mars - That’s What I Like [Official Video]',
-    id: 'PMivT7MJ41M',
-  },
-  {
-    title: 'Kodak Black - First Day Out [OFFICIAL MUSIC VIDEO]',
-    id: 'QoRgUlKxZ8M',
-  },
-  {
-    title: 'YoungBoy Never Broke Again - Untouchable (Official Music Video)',
-    id: 'ipM9SkIkwCY',
-  },
-];
-
 class Home extends React.Component {
   static propTypes = {
-    questions: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        title: PropTypes.string,
-        videoUrl: PropTypes.string,
-      }),
-    ),
-  };
-
-  static defaultProps = {
-    questions: [],
+    data: PropTypes.shape({
+      loading: PropTypes.bool.isRequired,
+      questions: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string,
+          title: PropTypes.string,
+          videoUrl: PropTypes.string,
+        }),
+      ).isRequired,
+    }).isRequired,
   };
 
   render() {
+    const { data: { loading, questions } } = this.props;
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <h1>
-            Ask refugees
-            {'{'}
-            code
-            {'}'}
-            {JSON.stringify(this.props.questions)}
-          </h1>
-          <Questions questions={dummyQuestions} />
+          {loading
+            ? 'Loading...'
+            : <h1>
+                Ask refugees
+                {'{'}
+                code
+                {'}'}
+                <Questions questions={questions} />
+              </h1>}
         </div>
       </div>
     );
   }
 }
 
-export default withStyles(s)(Home);
+export default compose(withStyles(s), graphql(questionsQuery))(Home);
