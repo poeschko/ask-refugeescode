@@ -11,15 +11,14 @@ class Cover extends React.Component {
           {' '}Search the refugees{'{'}code{'}'} question
         </h3>
         <div className={s.suche}>
-          {' '}<input type="text" name="search" placeholder="Search.." />
-          <label htmlFor="search" className="sr-only">
-            suchen
-          </label>
+          {' '}<input type="text" placeholder="Search.." />
           <button
             className="btn btn-secondary"
             type="submit"
             aria-label="suchen"
-          />
+          >
+            <i className="fa fa-search">Search</i>
+          </button>
         </div>
       </div>
     );
