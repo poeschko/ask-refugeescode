@@ -14,6 +14,9 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import ApolloClient from 'apollo-client';
+import { ApolloProvider } from 'react-apollo';
+
 import App from '../App';
 import Layout from './Layout';
 
@@ -25,13 +28,25 @@ describe('Layout', () => {
   it('renders children correctly', () => {
     const store = mockStore(initialState);
 
+    const apolloClient = new ApolloClient({
+      networkInterface: {
+        async query() {
+          // Just an empty dataset for testing purposes for now.
+          return { data: [] };
+        },
+      },
+      queryDeduplication: true,
+    });
+
     const wrapper = renderer
       .create(
-        <App context={{ insertCss: () => {}, store }}>
-          <Layout>
-            <div className="child" />
-          </Layout>
-        </App>,
+        <ApolloProvider client={apolloClient}>
+          <App context={{ insertCss: () => {}, store }}>
+            <Layout>
+              <div className="child" />
+            </Layout>
+          </App>
+        </ApolloProvider>,
       )
       .toJSON();
 
