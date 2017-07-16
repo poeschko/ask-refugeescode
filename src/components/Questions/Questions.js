@@ -39,8 +39,6 @@ class Questions extends React.Component {
     this.setState({ current: null });
   };
 
-  embedLink = id => `https://www.youtube.com/embed/${id}`;
-
   render() {
     const { loading, questions } = this.props.data;
     return (
@@ -76,13 +74,9 @@ class Questions extends React.Component {
             title={
               this.state.current ? this.state.current.title : 'No opened video'
             }
-            src={
-              this.state.current
-                ? this.embedLink(this.state.current.videoUrl)
-                : 'no-link'
-            }
+            src={this.state.current ? this.state.current.videoUrl : 'no-link'}
             width="100%"
-            height="400px"
+            height="450px"
             allowFullScreen
           />
           <h3>
