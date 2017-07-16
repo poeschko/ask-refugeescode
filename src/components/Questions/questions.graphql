@@ -1,0 +1,7 @@
+query QuestionsSearch($search: String!) {
+  questions(search: $search) {
+    id
+    title
+    videoUrl
+  }
+}

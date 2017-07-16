@@ -8,45 +8,33 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql, compose } from 'react-apollo';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import questionsQuery from './questions.graphql';
 import Questions from '../../components/Questions';
+import Cover from '../../components/Cover';
 import s from './Home.css';
 
 class Home extends React.Component {
-  static propTypes = {
-    data: PropTypes.shape({
-      loading: PropTypes.bool.isRequired,
-      questions: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string,
-          title: PropTypes.string,
-          videoUrl: PropTypes.string,
-        }),
-      ).isRequired,
-    }).isRequired,
+  state = {
+    search: '',
+  };
+
+  onSearchChange = value => {
+    this.setState({ search: value });
   };
 
   render() {
-    const { data: { loading, questions } } = this.props;
     return (
-      <div className={s.root}>
+      <div>
+        <Cover onSearchChange={this.onSearchChange} />
         <div className={s.container}>
-          {loading
-            ? 'Loading...'
-            : <h1>
-                Ask refugees
-                {'{'}
-                code
-                {'}'}
-                <Questions questions={questions} />
-              </h1>}
+          <h1>
+            Ask refugees {'{'}code{'}'}
+            <Questions search={this.state.search} />
+          </h1>
         </div>
       </div>
     );
   }
 }
 
-export default compose(withStyles(s), graphql(questionsQuery))(Home);
+export default withStyles(s)(Home);

@@ -16,7 +16,6 @@ import normalizeCss from 'normalize.css';
 import s from './Layout.css';
 import Header from '../Header';
 import Footer from '../Footer';
-import Cover from '../Cover';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -28,7 +27,6 @@ class Layout extends React.Component {
     return (
       <div>
         <Header userEmail={this.props.userEmail} />
-        <Cover />
         {this.props.children}
         <Footer />
       </div>
