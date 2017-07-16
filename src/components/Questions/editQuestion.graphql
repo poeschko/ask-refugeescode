@@ -1,0 +1,7 @@
+mutation editQuestion($id: String!, $title: String!, $videoUrl: String!) {
+  editQuestion(id: $id, title: $title, videoUrl: $videoUrl) {
+    id
+    title
+    videoUrl
+  }
+}

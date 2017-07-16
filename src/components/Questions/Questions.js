@@ -1,13 +1,18 @@
+// @flow
+
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
 import Modal from 'react-modal';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import PropTypes from 'prop-types';
 import questionsQuery from './questions.graphql';
+import editQuestionQuery from './editQuestion.graphql';
 
 import QuestionItem from '../QuestionItem';
+import EditQuestionDialog from '../EditQuestionDialog';
 
 import s from './Questions.css';
+
+import type Question from '../../data/flow/Question';
 
 const customStyles = {
   overlay: {
@@ -33,29 +38,28 @@ const customStyles = {
 };
 
 class Questions extends React.Component {
-  static propTypes = {
-    data: PropTypes.shape({
-      loading: PropTypes.bool.isRequired,
-      questions: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string,
-          title: PropTypes.string,
-          videoUrl: PropTypes.string,
-        }),
-      ).isRequired,
-    }).isRequired,
-  };
-
   state = {
     current: null,
+    editing: false,
+  };
+
+  onSaveQuestion = (question: Question) => {
+    this.props.editQuestionMutation({
+      variables: {
+        id: question.id,
+        title: question.title,
+        videoUrl: question.videoUrl,
+      },
+    });
+    this.closeModal();
   };
 
   openModal = question => {
-    this.setState({ current: question });
+    this.setState({ current: question, editing: false });
   };
 
-  afterOpenModal = () => {
-    // Do something else
+  openEditDialog = question => {
+    this.setState({ current: question, editing: true });
   };
 
   closeModal = () => {
@@ -63,6 +67,50 @@ class Questions extends React.Component {
   };
 
   embedLink = id => `https://www.youtube.com/embed/${id}`;
+
+  props: {
+    data: {
+      loading: boolean,
+      questions: Question[],
+    },
+    editQuestionMutation: Function,
+  };
+
+  renderQuestionDialog() {
+    const { current, editing } = this.state;
+    return (
+      <Modal
+        isOpen={!editing && current}
+        onRequestClose={this.closeModal}
+        style={customStyles}
+        contentLabel="Answer Video"
+      >
+        <iframe
+          title={current ? current.title : 'No opened video'}
+          src={current ? this.embedLink(current.videoUrl) : 'no-link'}
+          width={customStyles.content.width}
+          height="400px"
+          allowFullScreen
+        />
+      </Modal>
+    );
+  }
+
+  renderEditDialog() {
+    const { current, editing } = this.state;
+    if (editing && current) {
+      return (
+        <EditQuestionDialog
+          isOpen={editing}
+          question={current}
+          isCreating={false}
+          onConfirm={this.onSaveQuestion}
+          onCancel={this.closeModal}
+        />
+      );
+    }
+    return null;
+  }
 
   render() {
     const { loading, questions } = this.props.data;
@@ -76,30 +124,12 @@ class Questions extends React.Component {
                 key={question.id}
                 question={question}
                 openModal={this.openModal}
+                openEditDialog={this.openEditDialog}
               />,
             )}
         </ul>
-        <Modal
-          isOpen={this.state.current}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Answer Video"
-        >
-          <iframe
-            title={
-              this.state.current ? this.state.current.title : 'No opened video'
-            }
-            src={
-              this.state.current
-                ? this.embedLink(this.state.current.videoUrl)
-                : 'no-link'
-            }
-            width={customStyles.content.width}
-            height="400px"
-            allowFullScreen
-          />
-        </Modal>
+        {this.renderQuestionDialog()}
+        {this.renderEditDialog()}
       </div>
     );
   }
@@ -110,4 +140,5 @@ export default compose(
   graphql(questionsQuery, {
     options: ({ search }) => ({ variables: { search } }),
   }),
+  graphql(editQuestionQuery, { name: 'editQuestionMutation' }),
 )(Questions);

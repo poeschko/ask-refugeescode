@@ -2,33 +2,38 @@
 
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import FaEdit from 'react-icons/lib/fa/edit';
 
 import s from './QuestionItem.css';
 
-const FaShareAlt = require('react-icons/lib/fa/share-alt');
-
-type Question = { title: string, id: string };
+import type Question from '../../data/flow/Question';
 
 class QuestionItem extends React.Component {
+  onOpenClick = () => {
+    this.props.openModal(this.props.question);
+  };
+
+  onEditClick = () => {
+    this.props.openEditDialog(this.props.question);
+  };
+
   props: {
     question: Question,
     openModal: Question => void,
+    openEditDialog: Question => void,
   };
 
   render() {
     return (
       <li className={s.questionItem}>
         <div className={s.iconWrapper}>
-          <FaShareAlt />
+          <button onClick={this.onEditClick}>
+            <FaEdit />
+          </button>
         </div>
-        <a
-          href={`#${this.props.question.id}`}
-          onClick={() => {
-            this.props.openModal(this.props.question);
-          }}
-        >
+        <button onClick={this.onOpenClick}>
           {this.props.question.title}
-        </a>
+        </button>
       </li>
     );
   }

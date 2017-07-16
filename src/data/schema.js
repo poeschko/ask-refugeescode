@@ -14,6 +14,7 @@ import {
 
 import me from './queries/me';
 import questions from './queries/questions';
+import editQuestion from './mutations/editQuestion';
 
 const schema = new Schema({
   query: new ObjectType({
@@ -21,6 +22,12 @@ const schema = new Schema({
     fields: {
       me,
       questions,
+    },
+  }),
+  mutation: new ObjectType({
+    name: 'Mutation',
+    fields: {
+      editQuestion,
     },
   }),
 });
