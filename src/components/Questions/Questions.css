@@ -1,3 +1,9 @@
 .questions {
   width: 900px;
 }
+
+.loading {
+  float: right;
+  font-size: 10px;
+  color: gray;
+}
