@@ -53,6 +53,7 @@ class EditQuestionDialog extends React.Component {
         onRequestClose={this.onCancelClick}
         className={{ base: s.dialog }}
         overlayClassName={{ base: s.overlayDialog }}
+        contentLabel="Edit question"
       >
         <table className={s.formTable}>
           <tbody>
