@@ -9,35 +9,43 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql, compose } from 'react-apollo';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import newsQuery from './news.graphql';
 import s from './Home.css';
 
 class Home extends React.Component {
   static propTypes = {
-    questions: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        title: PropTypes.string,
-        videoUrl: PropTypes.string,
-      }),
-    ).isRequired,
-    userEmail: PropTypes.string.isRequired,
+    data: PropTypes.shape({
+      loading: PropTypes.bool.isRequired,
+      questions: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string,
+          title: PropTypes.string,
+          videoUrl: PropTypes.string,
+        }),
+      ).isRequired,
+      userEmail: PropTypes.string.isRequired,
+    }).isRequired,
   };
 
   render() {
+    const { data: { loading } } = this.props;
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <h1>
-            Ask refugees
-            {'{'}
-            code
-            {'}'}
-          </h1>
+          {loading
+            ? 'Loading...'
+            : <h1>
+                Ask refugees
+                {'{'}
+                code
+                {'}'}
+              </h1>}
         </div>
       </div>
     );
   }
 }
 
-export default withStyles(s)(Home);
+export default compose(withStyles(s), graphql(newsQuery))(Home);
