@@ -9,6 +9,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  clear: both;
 }
 
 .questionDialogBg {
@@ -38,4 +39,23 @@
 .questionDialogTitle {
   padding: 0;
   margin: 10px;
+}
+
+.addQuestionButton {
+  float: right;
+  display: inline-block;
+  width: 120px;
+  height: 32px;
+  font-size: 0.9em;
+  background-color: #4c6838;
+  color: white;
+  border: none;
+  margin: 0 10px 5px;
+  transition: 0.5s;
+  transition-delay: 0.1s;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.addQuestionButton:hover {
+  background-color: #6b8e51;
 }

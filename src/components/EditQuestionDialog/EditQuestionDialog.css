@@ -1,7 +1,59 @@
 .dialog {
   width: 600px;
-  height: 400px;
+  height: 140px;
   background: white;
-  margin: 80px auto;
+  margin: 200px auto;
   border: none;
+}
+
+.overlayDialog {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.formTable {
+  width: 100%;
+  padding: 15px;
+}
+
+.formTable tr {
+  width: 100%;
+}
+
+.formTable tr th {
+  width: 20%;
+  text-align: left;
+}
+
+.formTable tr td {
+  width: 70%;
+}
+
+.formTable tr td input {
+  width: 100%;
+}
+
+.buttonStyle {
+  float: right;
+  display: inline-block;
+  width: 120px;
+  height: 32px;
+  font-size: 0.9em;
+  background-color: #4c6838;
+  font-weight: bold;
+  color: white;
+  border: none;
+  margin: 0 20px 5px 0;
+  transition: 0.5s;
+  transition-delay: 0.1s;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.buttonStyle:hover {
+  background-color: #6b8e51;
 }

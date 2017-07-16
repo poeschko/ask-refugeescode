@@ -52,8 +52,9 @@ class EditQuestionDialog extends React.Component {
         isOpen={this.props.isOpen}
         onRequestClose={this.onCancelClick}
         className={{ base: s.dialog }}
+        overlayClassName={{ base: s.overlayDialog }}
       >
-        <table>
+        <table className={s.formTable}>
           <tbody>
             <tr>
               <th>Title:</th>
@@ -72,10 +73,12 @@ class EditQuestionDialog extends React.Component {
             </tr>
           </tbody>
         </table>
-        <button onClick={this.onConfirmClick}>
+        <button className={s.buttonStyle} onClick={this.onConfirmClick}>
           {this.props.isCreating ? 'Create' : 'Save'}
         </button>
-        <button onClick={this.onCancelClick}>Cancel</button>
+        <button className={s.buttonStyle} onClick={this.onCancelClick}>
+          Cancel
+        </button>
       </Modal>
     );
   }
