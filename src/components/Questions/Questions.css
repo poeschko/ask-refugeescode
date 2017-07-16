@@ -1,5 +1,12 @@
+
 .loading {
   float: right;
   font-size: 10px;
   color: gray;
+}
+
+.questions {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
