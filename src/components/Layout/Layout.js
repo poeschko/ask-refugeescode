@@ -26,7 +26,7 @@ class Layout extends React.Component {
     const { loading, me } = this.props.data;
     return (
       <div>
-        <Header userEmail={loading ? '' : me.email} />
+        <Header userEmail={loading || !me ? '' : me.email} />
         {this.props.children}
         <Footer />
       </div>
