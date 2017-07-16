@@ -10,7 +10,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import Questions from '../../components/Questions';
 import s from './Home.css';
+
+const dummyQuestions = [
+  {
+    title: 'DJ Khaled - Wild Thoughts ft. Rihanna, Bryson Tiller',
+    id: 'fyaI4-5849w',
+  },
+  {
+    title: 'Bruno Mars - That’s What I Like [Official Video]',
+    id: 'PMivT7MJ41M',
+  },
+  {
+    title: 'Kodak Black - First Day Out [OFFICIAL MUSIC VIDEO]',
+    id: 'QoRgUlKxZ8M',
+  },
+  {
+    title: 'YoungBoy Never Broke Again - Untouchable (Official Music Video)',
+    id: 'ipM9SkIkwCY',
+  },
+];
 
 class Home extends React.Component {
   static propTypes = {
@@ -38,6 +58,7 @@ class Home extends React.Component {
             {'}'}
             {JSON.stringify(this.props.questions)}
           </h1>
+          <Questions questions={dummyQuestions} />
         </div>
       </div>
     );
