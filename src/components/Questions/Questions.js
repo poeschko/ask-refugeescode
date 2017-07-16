@@ -119,7 +119,12 @@ class Questions extends React.Component {
     const { loading, questions } = this.props.data;
     return (
       <div>
-        <button onClick={this.onAddQuestionClick}>Add a question</button>
+        <button
+          className={s.addQuestionButton}
+          onClick={this.onAddQuestionClick}
+        >
+          Add a question
+        </button>
         {loading && <span className={s.loading}>Loading...</span>}
         <ul className={s.questions}>
           {questions &&
