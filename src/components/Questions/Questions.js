@@ -6,6 +6,8 @@ import Modal from 'react-modal';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import questionsQuery from './questions.graphql';
 import editQuestionQuery from './editQuestion.graphql';
+import meQuery from '../Layout/me.graphql';
+import canEdit from '../../data/canEdit';
 
 import QuestionItem from '../QuestionItem';
 import EditQuestionDialog from '../EditQuestionDialog';
@@ -54,9 +56,16 @@ class Questions extends React.Component {
   };
 
   props: {
-    data: {
+    questionsData: {
       loading: boolean,
       questions: Question[],
+    },
+    meData: {
+      loading: boolean,
+      me?: {
+        id: string, // eslint-disable-line react/no-unused-prop-types
+        email: string, // eslint-disable-line react/no-unused-prop-types
+      },
     },
     editQuestionMutation: Function,
     search: string,
@@ -65,7 +74,7 @@ class Questions extends React.Component {
   renderQuestionDialog() {
     return (
       <Modal
-        isOpen={this.state.current && !this.state.editing}
+        isOpen={!!this.state.current && !this.state.editing}
         onAfterOpen={this.afterOpenModal}
         onRequestClose={this.closeModal}
         contentLabel="Answer Video"
@@ -116,15 +125,18 @@ class Questions extends React.Component {
   }
 
   render() {
-    const { loading, questions } = this.props.data;
+    const { loading, questions } = this.props.questionsData;
+    const { me } = this.props.meData;
+    const editable = canEdit(me);
     return (
       <div>
-        <button
-          className={s.addQuestionButton}
-          onClick={this.onAddQuestionClick}
-        >
-          Add a question
-        </button>
+        {editable &&
+          <button
+            className={s.addQuestionButton}
+            onClick={this.onAddQuestionClick}
+          >
+            Add a question
+          </button>}
         {loading && <span className={s.loading}>Loading...</span>}
         <ul className={s.questions}>
           {questions &&
@@ -133,7 +145,7 @@ class Questions extends React.Component {
                 key={question.id}
                 question={question}
                 openModal={this.openModal}
-                openEditDialog={this.openEditDialog}
+                openEditDialog={editable ? this.openEditDialog : null}
               />,
             )}
         </ul>
@@ -147,7 +159,11 @@ class Questions extends React.Component {
 export default compose(
   withStyles(s),
   graphql(questionsQuery, {
+    name: 'questionsData',
     options: ({ search }) => ({ variables: { search } }),
   }),
   graphql(editQuestionQuery, { name: 'editQuestionMutation' }),
+  graphql(meQuery, {
+    name: 'meData',
+  }),
 )(Questions);

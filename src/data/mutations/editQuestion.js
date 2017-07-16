@@ -1,6 +1,7 @@
 import { GraphQLString } from 'graphql';
 import QuestionType from '../types/QuestionType';
 import Question from '../models/Question';
+import canEdit from '../canEdit';
 
 const editQuestion = {
   type: QuestionType,
@@ -15,7 +16,10 @@ const editQuestion = {
       type: GraphQLString,
     },
   },
-  resolve(root, { id, title, videoUrl }) {
+  resolve({ request }, { id, title, videoUrl }) {
+    if (!canEdit(request.user)) {
+      throw new Error('Not authorized to edit questions');
+    }
     if (id) {
       return Question.findById(id).then(question =>
         question

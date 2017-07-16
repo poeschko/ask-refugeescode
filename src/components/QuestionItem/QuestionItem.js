@@ -9,6 +9,10 @@ import s from './QuestionItem.css';
 import type Question from '../../data/flow/Question';
 
 class QuestionItem extends React.Component {
+  static defaultProps = {
+    openEditDialog: null,
+  };
+
   onOpenClick = () => {
     this.props.openModal(this.props.question);
   };
@@ -20,17 +24,18 @@ class QuestionItem extends React.Component {
   props: {
     question: Question,
     openModal: Question => void,
-    openEditDialog: Question => void,
+    openEditDialog?: Question => void,
   };
 
   render() {
     return (
       <li className={s.questionItem}>
-        <div className={s.iconWrapper}>
-          <button className={s.questionButton} onClick={this.onEditClick}>
-            <FaEdit />
-          </button>
-        </div>
+        {this.props.openEditDialog &&
+          <div className={s.iconWrapper}>
+            <button className={s.questionButton} onClick={this.onEditClick}>
+              <FaEdit />
+            </button>
+          </div>}
         <button className={s.questionButton} onClick={this.onOpenClick}>
           {this.props.question.title}
         </button>
